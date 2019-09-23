@@ -9,24 +9,38 @@ class EditContact extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     axios
-      .get(`http://jsonplaceholder.typicode.com/users${id}`)
+      .get(`http://jsonplaceholder.typicode.com/users/${id}`)
       .then((response) =>
         this.setState({
-          name: response.data,
-          email: response.email,
-          phone: response.data
+          name: response.data.name,
+          email: response.data.email,
+          phone: response.data.phone
         })
       );
   }
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  handleSubmit = (e) => {
-    e.preventDefault();
 
+  handleSubmit = (dispatch, e) => {
+    e.preventDefault();
+    const { name, email, phone } = this.state;
+
+    const updContact = {
+      name,
+      email,
+      phone
+    };
+    const { id } = this.props.match.params;
+    axios
+      .put(`http://jsonplaceholder.typicode.com/users/${id}`, updContact)
+      .then((response) =>
+        dispatch({ type: "UPDATE_CONTACT", payload: response.data })
+      );
     // clear state
     this.setState({ name: "", email: "", phone: "" });
     this.props.history.push("/contact");
+  };
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {

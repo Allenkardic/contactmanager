@@ -15,6 +15,14 @@ const reducer = (state, action) => {
         ...state,
         items: [action.payload, ...state.items]
       };
+
+    case "UPDATE_CONTACT":
+      return {
+        ...state,
+        items: state.items.map((item) =>
+          item.id === action.payload.id ? (item = action.payload) : item
+        )
+      };
     default:
       return state;
   }
@@ -22,7 +30,7 @@ const reducer = (state, action) => {
 
 export class Provider extends Component {
   state = {
-    items: [{ id: 1, name: "emma", email: "akwe@yahoo.com", phone: "222-222" }],
+    items: [],
     dispatch: (action) => this.setState((state) => reducer(state, action))
   };
 
