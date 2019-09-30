@@ -1,5 +1,4 @@
 import React from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Contacts from "./components/contacts/Contacts";
 import { Provider } from "./Context";
@@ -8,6 +7,7 @@ import EditContact from "./components/contacts/EditContact";
 import About from "./components/pages/About";
 import Test from "./components/test/Test";
 import Notfound from "./components/pages/Notfound";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
