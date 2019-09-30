@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "../../css/AddContact.css";
 import { Consumer } from "../../Context";
 import axios from "axios";
+
+alert(
+  "This app is currently working perfectly on my local machine but unfortunately, the app is not currently working properly when deployed on gitpages. Working on it currently!!!"
+);
 class AddContact extends Component {
   state = { name: "", email: "", phone: "" };
   handleChange = (e) => {
