@@ -16,7 +16,7 @@ function App() {
         {" "}
         <div className="App">
           <Navbar
-            brand="brand"
+            brand="ContactManager"
             home="addContact"
             listContacts="listContacts"
             about="About"
